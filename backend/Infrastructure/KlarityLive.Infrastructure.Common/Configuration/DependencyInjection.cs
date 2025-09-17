@@ -1,6 +1,8 @@
 ﻿using KlarityLive.Core.Common.Security;
 using KlarityLive.Core.Common.Services.Concrete;
 using KlarityLive.Core.Common.Services.Interfaces;
+using KlarityLive.Infrastructure.Data.Repositories.Concrete;
+using KlarityLive.Infrastructure.Data.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
@@ -52,12 +54,17 @@ namespace KlarityLive.Infrastructure.Common.Configuration
 
                 BlobStorageConnectionString = keyVaultService.GetKeyAsync("BlobStorageConnectionString").GetAwaiter().GetResult()
                        ?? throw new ArgumentException("BlobStorageConnectionString could not be found"),
+
+                CosmosDbConnectionString = keyVaultService.GetKeyAsync("CosmosDbConnectionString").GetAwaiter().GetResult()
+                       ?? throw new ArgumentException("CosmosDbConnectionString could not be found"),
             };
 
             // Register AppSecrets as singleton instance
             services.AddSingleton(appSecrets);
 
             services.AddScoped<IDbConnection>(provider => new SqlConnection(appSecrets.DbConnectionString));
+
+            services.AddScoped<IMeterReadingRepository, MeterReadingRepository>();
 
             CacheConfiguration.Configure(services, appSecrets);
             DatabaseConfiguration.Configure(services, appSecrets);
