@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\KlarityLive.Core.Common\KlarityLive.Core.Common.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\KlarityLive.Infrastructure.Data\KlarityLive.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
