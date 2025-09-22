@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using KlarityLive.Core.Common.DTOs.Building;
+using KlarityLive.Core.Common.DTOs.MeterDto;
+using KlarityLive.Core.Common.DTOs.MeterReading;
 using KlarityLive.Core.Common.DTOs.Tenant;
 using KlarityLive.Core.Common.DTOs.User;
 using KlarityLive.Domain.Core.Entities.Amin;
@@ -17,6 +19,11 @@ namespace KlarityLive.Core.Common.AutoMapper
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Tenant, TenantDto>().ReverseMap();
             CreateMap<Building, BuildingDto>().ReverseMap();
+
+            CreateMap<MeterReading, MeterReadingDto>().ReverseMap();
+            CreateMap<Meter, MeterDto>().ReverseMap();
+            CreateMap<CreateMeterReadingDto, MeterReading>();
+            CreateMap<UpdateMeterReadingDto, MeterReading>();
         }
 
         private static void RegisterMappings(Profile profile)

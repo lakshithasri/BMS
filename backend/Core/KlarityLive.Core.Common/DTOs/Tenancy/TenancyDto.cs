@@ -1,4 +1,5 @@
 ﻿using KlarityLive.Core.Common.DTOs.Building;
+using KlarityLive.Core.Common.DTOs.MeterReading;
 using KlarityLive.Core.Common.DTOs.Tenant;
 using KlarityLive.Domain.Core.Entities.BMS;
 using KlarityLive.Domain.Core.Enums;
@@ -17,6 +18,6 @@ namespace KlarityLive.Core.Common.DTOs.Tenancy
         public string Notes { get; set; }
         public virtual BuildingDto Building { get; set; }
         public virtual TenantDto Tenant { get; set; }
-        public virtual ICollection<MeterReading> MeterReadings { get; set; }
+        public virtual ICollection<MeterReadingDto> MeterReadings { get; set; }
     }
 }
